@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#080d19">
+<meta name="description" content="Math Speed Test PRO — premium timed arithmetic practice, advanced levels, daily challenge and performance reports.">
+<title>Math Speed Test PRO</title>
+<style>
+:root{color-scheme:dark;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#edf2ff;background:#080d19;--bg:#080d19;--panel:#111a2b;--panel2:#0c1423;--gold:#f5c451;--line:#27344b;--muted:#9ba9c1;--blue:#eab83f;--blueText:#17120a}
+*{box-sizing:border-box}body{margin:0;padding:clamp(10px,3vw,22px);padding-bottom:calc(16px + env(safe-area-inset-bottom));background:radial-gradient(ellipse at top,#17233b 0%,#080d19 54%);min-height:100vh}.app{max-width:780px;margin:auto}
+header{padding:12px 3px 16px}h1{font-size:clamp(1.6rem,5vw,2.2rem);margin:0;letter-spacing:-.04em;color:#fff}h1 .pro{color:var(--gold);font-size:.76em;letter-spacing:.12em}h2{font-size:1.15rem;margin:0 0 12px;color:#f6f8ff}p{color:var(--muted);margin:.45rem 0;line-height:1.45}
+.card{background:linear-gradient(145deg,#121c2e,#0e1727);border:1px solid var(--line);border-radius:20px;padding:clamp(13px,3.5vw,20px);margin:12px 0;box-shadow:0 14px 32px #0005}
+label{display:block;font-size:.92rem;font-weight:700;margin:9px 0 6px;color:#dce5f7}input,select{width:100%;min-width:0;padding:12px;border:1px solid #35435b;border-radius:12px;background:#0a1220;color:#f4f7ff;font:inherit;font-size:16px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}button{min-height:44px;padding:11px 12px;border:1px solid #35435b;border-radius:12px;background:#172237;color:#e9efff;font:inherit;font-weight:750;cursor:pointer;touch-action:manipulation;transition:background .15s,border-color .15s}button:hover{border-color:#b58b2f;background:#202e46}button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #f5c451;outline-offset:2px}button:active{transform:scale(.99)}button.selected{background:#3a2e13;border-color:var(--gold);color:#ffdf86}.primary{background:linear-gradient(135deg,#ffdc7a,#eab83f);color:#211805;border-color:#f5c451;width:100%;box-shadow:0 5px 18px #eab83f20}.primary:hover{background:#ffdf86;color:#211805}.full{grid-column:1/-1}.muted{color:var(--muted);font-size:.88rem}.top{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap}.timer{font-size:1.45rem;font-weight:850;font-variant-numeric:tabular-nums;color:var(--gold)}.question{font-size:clamp(1.8rem,8vw,3rem);font-weight:850;text-align:center;padding:20px 0;overflow-wrap:anywhere;line-height:1.25;min-height:82px;color:#fff}
+.hidden{display:none!important}.stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.stat{background:#0a1322;border:1px solid #26344b;border-radius:14px;padding:12px;font-size:.86rem;color:#b7c4d9}.stat strong{display:block;font-size:1.55rem;margin-top:3px;color:#f7cb5c;font-variant-numeric:tabular-nums}.pill{display:inline-block;background:#382e16;color:#ffdc7a;border:1px solid #6d5421;border-radius:999px;padding:5px 10px;font-size:.82rem;font-weight:800}
+.keypad{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:10px}.keypad button{min-height:51px;font-size:1.15rem;background:#1a2740;border-color:#34445f}.keypad button:hover{background:#243654}.keypad .key-action{background:#29334a;color:#ffdb78}.keypad .key-submit{background:linear-gradient(135deg,#ffdc7a,#eab83f);border-color:var(--gold);color:#211805}.answer-display{font-size:1.25rem;font-weight:750;letter-spacing:.03em;text-align:center;min-height:48px;padding:10px;border:1px solid #35435b;border-radius:12px;background:#09111e;color:#fff;overflow-wrap:anywhere}
+.profile-row{display:grid;grid-template-columns:1fr auto;gap:9px;align-items:end}.small-button{white-space:nowrap}.table{width:100%;border-collapse:collapse;font-size:.92rem}.table td,.table th{text-align:left;padding:9px 6px;border-bottom:1px solid var(--line)}.table th{color:#9ba9c1;font-size:.8rem}.table td{color:#e7edfa}.empty{text-align:center;padding:12px;color:var(--muted)}.brandline{display:flex;align-items:center;gap:9px;margin-bottom:5px}.brandmark{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;background:#382e16;border:1px solid #6d5421;color:#ffdc7a;font-size:1.35rem}.tagline{font-size:.96rem}.section-kicker{color:var(--gold);font-size:.75rem;font-weight:850;letter-spacing:.13em;text-transform:uppercase}
+@media(min-width:620px){.stats{grid-template-columns:repeat(4,minmax(0,1fr))}.setup-two{display:grid;grid-template-columns:1fr 1fr;gap:14px}.setup-two .card{margin:0}}
+@media(max-width:380px){.grid{gap:7px}button{padding:10px 8px;font-size:.92rem}.question{padding:15px 0}.card{border-radius:16px}.profile-row{grid-template-columns:1fr}.profile-row .small-button{width:100%}}
+</style>
+</head>
+<body><main class="app">
+<header><div class="brandline"><div class="brandmark">⚡</div><div><div class="section-kicker">Premium practice arena</div><h1>Math Speed Test <span class="pro">PRO</span></h1></div></div><p class="tagline">Train faster. Think sharper. Beat your best.</p></header>
+
+<section class="card">
+  <div class="top"><h2>👤 Player profile</h2><span class="pill" id="profileBadge">Player</span></div>
+  <div class="profile-row"><div><label for="playerName">Your name</label><input id="playerName" maxlength="24" autocomplete="nickname" placeholder="Enter your name"></div><button id="saveName" class="small-button">Save name</button></div>
+  <p class="muted">Scores and leaderboard are saved on this device/browser only.</p>
+</section>
+
+<section class="card" id="setup">
+  <div class="top"><h2>1. Choose operation</h2><span class="muted">Practice mode</span></div>
+  <div class="grid" id="ops" style="margin-top:10px">
+    <button class="selected" data-op="+">➕ Addition</button><button data-op="-">➖ Subtraction</button>
+    <button data-op="×">✖️ Multiplication</button><button data-op="÷">➗ Division</button><button class="full" data-op="mixed">🎯 Mixed Test</button>
+  </div>
+  <label>2. Difficulty</label>
+  <div class="grid" id="levels">
+    <button class="selected" data-level="Easy">🟢 Easy</button><button data-level="Medium">🟡 Medium</button>
+    <button data-level="Hard">🟠 Hard</button><button data-level="Challenge">🔴 Challenge</button>
+    <button class="full" data-level="Advanced">🧠 Advanced</button>
+  </div>
+  <p id="description">Easy: numbers from 1 to 10.</p>
+  <div class="grid">
+    <label>Timer<select id="duration"><option value="60">1 minute</option><option value="300">5 minutes</option><option value="600">10 minutes</option><option value="900">15 minutes</option></select></label>
+    <label>Advanced topic<select id="topic" disabled><option value="all">All topics</option><option value="negative">Negative numbers</option><option value="decimal">Decimals</option><option value="fraction">Fractions</option><option value="bodmas">BODMAS</option></select></label>
+  </div>
+  <button class="primary" id="start" style="margin-top:12px">Start Test</button>
+  <button id="daily" class="full" style="width:100%;margin-top:9px">📅 Start Daily Challenge</button>
+  <p class="muted" id="dailyInfo"></p>
+</section>
+
+<section class="card hidden" id="game">
+  <div class="top"><span class="muted">Question <b id="number">1</b></span><span>Score: <b id="score">0</b></span><span class="timer" id="timer">01:00</span></div>
+  <p id="tag" class="muted">Easy practice</p><div id="question" class="question">8 + 4 = ?</div>
+  <div class="answer-display" id="answerDisplay" aria-live="polite">Your answer</div>
+  <input id="answer" class="hidden" autocomplete="off" inputmode="none" aria-label="Answer buffer">
+  <div class="keypad" id="keypad" aria-label="Inbuilt answer keyboard">
+    <button data-key="1">1</button><button data-key="2">2</button><button data-key="3">3</button>
+    <button data-key="4">4</button><button data-key="5">5</button><button data-key="6">6</button>
+    <button data-key="7">7</button><button data-key="8">8</button><button data-key="9">9</button>
+    <button data-key="-">± / −</button><button data-key="0">0</button><button data-key=".">.</button>
+    <button data-key="/">a/b</button><button data-key="clear" class="key-action">Clear</button><button data-key="back" class="key-action">⌫</button>
+    <button id="submitAnswer" class="key-submit full">Submit Answer ✓</button>
+  </div>
+  <p id="feedback" aria-live="polite">Tap the built-in keys, then submit.</p>
+  <div class="grid"><button id="skip">Skip question</button><button id="end">End test</button><button id="exit" class="full">Exit to Home</button></div>
+</section>
+
+<section class="card hidden" id="result" aria-live="polite">
+  <h2>🏁 Test complete</h2><div class="stats">
+    <div class="stat">Score<strong id="rScore">0</strong></div><div class="stat">Accuracy<strong id="rAccuracy">0%</strong></div>
+    <div class="stat">Correct<strong id="rCorrect">0</strong></div><div class="stat">Wrong / skipped<strong id="rWrong">0</strong></div>
+  </div>
+  <h2 style="margin-top:18px">📊 Performance report</h2><div class="stats">
+    <div class="stat">Questions attempted<strong id="rAttempted">0</strong></div><div class="stat">Speed<strong id="rSpeed">0/min</strong></div>
+    <div class="stat">Time used<strong id="rTime">00:00</strong></div><div class="stat">Best accuracy<strong id="rBestAccuracy">0%</strong></div>
+  </div>
+  <p id="summary"></p><p id="personalBest"></p>
+  <button class="primary" id="retry">Try Again ↻</button><button id="backHome" class="full" style="width:100%;margin-top:9px">Home</button>
+</section>
+
+<section class="card">
+  <div class="top"><h2>🏆 PRO leaderboard</h2><button id="refreshBoard">Refresh</button></div>
+  <div class="stats">
+    <div class="stat">Your best score<strong id="bestScore">0</strong></div><div class="stat">Tests completed<strong id="testsCount">0</strong></div>
+  </div>
+  <div id="board" style="margin-top:12px"></div>
+  <p class="muted">This is a local leaderboard for profiles saved in this browser; it is not shared online between devices.</p>
+</section>
+<p class="muted">PRO features: Advanced levels, performance report, local leaderboard and daily challenge. Scores are stored on this browser/device only, not synced online.</p>
+</main>
+<script>
+(()=>{
+'use strict';
+const $=id=>document.getElementById(id);
+const STORE='mathSpeedTest_pro_v1';
+let op='+',level='Easy',remaining=60,initialDuration=60,correct=0,wrong=0,total=0,answer=0,active=false,locked=false,clock=null,dailyMode=false,answerText='';
+const descriptions={Easy:'Easy: numbers from 1 to 10.',Medium:'Medium: numbers from 1 to 50.',Hard:'Hard: numbers from 1 to 100.',Challenge:'Challenge: numbers up to 999.',Advanced:'Advanced: negative numbers, decimals, fractions and BODMAS.'};
+const todayKey=()=>new Date().toLocaleDateString('en-CA');
+const dateLabel=()=>new Date().toLocaleDateString(undefined,{year:'numeric',month:'long',day:'numeric'});
+const fmt=n=>String(Math.floor(Math.max(0,n)/60)).padStart(2,'0')+':'+String(Math.max(0,n)%60).padStart(2,'0');
+const rand=n=>Math.floor(Math.random()*n)+1;
+function load(){try{return JSON.parse(localStorage.getItem(STORE)||localStorage.getItem('mathSpeedTest_v3'))||{name:'Player',scores:[],daily:{}}}catch(e){return {name:'Player',scores:[],daily:{}}}}
+function save(data){try{localStorage.setItem(STORE,JSON.stringify(data))}catch(e){}}
+function profile(){return load().name||'Player'}
+function updateProfileUI(){const d=load();$('playerName').value=d.name||'Player';$('profileBadge').textContent=d.name||'Player';renderBoard()}
+function gcd(a,b){return b?gcd(b,a%b):Math.abs(a)}
+function reduced(n,d){let g=gcd(n,d)||1;n/=g;d/=g;if(d<0){n=-n;d=-d}return {n,d}}
+function safeText(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+$('saveName').onclick=()=>{const name=$('playerName').value.trim().slice(0,24)||'Player';const d=load();d.name=name;save(d);updateProfileUI();$('feedback').textContent='Profile saved for '+name+'.'};
+$('playerName').addEventListener('keydown',e=>{if(e.key==='Enter'){$('saveName').click();$('playerName').blur()}});
+$('ops').querySelectorAll('[data-op]').forEach(b=>b.onclick=()=>{if(active)return;op=b.dataset.op;$('ops').querySelectorAll('button').forEach(x=>x.classList.toggle('selected',x===b));});
+$('levels').querySelectorAll('[data-level]').forEach(b=>b.onclick=()=>{if(active)return;level=b.dataset.level;$('levels').querySelectorAll('button').forEach(x=>x.classList.toggle('selected',x===b));$('description').textContent=descriptions[level];$('topic').disabled=level!=='Advanced';});
+function setAnswer(v){answerText=v;$('answer').value=v;$('answerDisplay').textContent=v||'Your answer'}
+function display(q,ans,tag){answer=ans;$('question').textContent=q+' = ?';$('tag').textContent=tag;$('number').textContent=total+1;$('score').textContent=correct;setAnswer('');$('feedback').textContent='Tap the built-in keys, then submit.';locked=false}
+function makeQuestion(){
+ let sign=op==='mixed'?['+','-','×','÷'][rand(4)-1]:op;
+ if(level!=='Advanced'){
+  let max={Easy:10,Medium:50,Hard:100,Challenge:999}[level],x,y,ans;
+  if(sign==='+'){x=rand(max);y=rand(max);ans=x+y}
+  else if(sign==='-'){x=rand(max);y=rand(max);if(y>x)[x,y]=[y,x];ans=x-y}
+  else if(sign==='×'){x=rand(Math.min(max,99));y=rand(Math.min(max,99));ans=x*y}
+  else{y=rand(Math.min(max,99));x=rand(Math.min(max,999))*y;ans=x/y}
+  display(`${x} ${sign} ${y}`,ans,level+' · '+({'+':'Addition','-':'Subtraction','×':'Multiplication','÷':'Division'}[sign]));return;
+ }
+ const selected=$('topic').value,t=selected==='all'?['negative','decimal','fraction','bodmas'][rand(4)-1]:selected;
+ let x,y,q,ans;
+ if(t==='negative'){
+  x=Math.floor(Math.random()*61)-30;y=Math.floor(Math.random()*41)-20;
+  if(sign==='÷'){y=rand(12)*(Math.random()<.5?-1:1);x=rand(12)*y;ans=x/y}
+  else ans=sign==='+'?x+y:sign==='-'?x-y:x*y;
+  q=`(${x}) ${sign} (${y})`;
+ }else if(t==='decimal'){
+  x=rand(sign==='×'?30:200)/10;y=rand(sign==='×'?20:100)/10;
+  if(sign==='÷')x=rand(40)/10*y;
+  ans=sign==='+'?x+y:sign==='-'?x-y:sign==='×'?x*y:x/y;
+  q=`${x} ${sign} ${y}`;
+ }else if(t==='fraction'){
+  let f1=reduced(rand(12),rand(9)),f2=reduced(rand(12),rand(9));
+  if(sign==='+')ans=reduced(f1.n*f2.d+f2.n*f1.d,f1.d*f2.d);
+  else if(sign==='-')ans=reduced(f1.n*f2.d-f2.n*f1.d,f1.d*f2.d);
+  else if(sign==='×')ans=reduced(f1.n*f2.n,f1.d*f2.d);
+  else ans=reduced(f1.n*f2.d,f1.d*f2.n);
+  q=`${f1.n}/${f1.d} ${sign} ${f2.n}/${f2.d}`;display(q,ans.n+'/'+ans.d,'Advanced · Fractions');return;
+ }else{
+  x=rand(20);y=rand(12);let z=rand(10);const par=Math.random()<.5;
+  q=par?`(${x} + ${y}) × ${z}`:`${x} + ${y} × ${z}`;ans=par?(x+y)*z:x+y*z;display(q,ans,'Advanced · BODMAS');return;
+ }
+ display(q,Number(ans.toFixed(4)),'Advanced · '+({negative:'Negative numbers',decimal:'Decimals'}[t]));
+}
+function start(isDaily=false){
+ stop();dailyMode=isDaily;correct=wrong=total=0;remaining=isDaily?90:Number($('duration').value);initialDuration=remaining;
+ if(isDaily){op='mixed';level='Challenge';$('ops').querySelectorAll('[data-op]').forEach(b=>b.classList.toggle('selected',b.dataset.op==='mixed'));$('levels').querySelectorAll('[data-level]').forEach(b=>b.classList.toggle('selected',b.dataset.level==='Challenge'));$('description').textContent=descriptions[level]}
+ $('timer').textContent=fmt(remaining);$('result').classList.add('hidden');$('setup').classList.add('hidden');$('game').classList.remove('hidden');active=true;makeQuestion();
+ clock=setInterval(()=>{if(!active)return;remaining--;$('timer').textContent=fmt(remaining);if(remaining<=0)finish(true)},1000);
+}
+function stop(){if(clock!==null)clearInterval(clock);clock=null;active=false}
+function parse(v){v=v.trim().replace(/−/g,'-');if(v.includes('/')){let p=v.split('/').map(Number);if(p.length!==2||!Number.isFinite(p[0])||!Number.isFinite(p[1])||p[1]===0)return NaN;return p[0]/p[1]}return Number(v)}
+function submit(){if(!active||locked)return;let raw=answerText.trim(),v=parse(raw);if(!raw||!Number.isFinite(v)){$('feedback').textContent='Enter a valid answer using the built-in keys.';return}locked=true;total++;let target=parse(String(answer));if(Math.abs(v-target)<0.00011){correct++;$('feedback').textContent='✓ Correct!'}else{wrong++;$('feedback').textContent='Answer: '+answer}$('score').textContent=correct;setTimeout(()=>{if(active)makeQuestion()},420)}
+function skip(){if(!active||locked)return;locked=true;total++;wrong++;$('feedback').textContent='Skipped. Answer: '+answer;setTimeout(()=>{if(active)makeQuestion()},420)}
+function finish(timeout){
+ stop();$('game').classList.add('hidden');$('result').classList.remove('hidden');
+ const accuracy=total?Math.round(correct/total*100):0,elapsed=Math.max(0,initialDuration-remaining),speed=elapsed?Math.round(total/(elapsed/60)*10)/10:total;
+ $('rScore').textContent=correct;$('rAccuracy').textContent=accuracy+'%';$('rCorrect').textContent=correct;$('rWrong').textContent=wrong;
+ $('rAttempted').textContent=total;$('rSpeed').textContent=speed+'/min';$('rTime').textContent=fmt(elapsed);
+ const dBefore=load(),previous=dBefore.scores.filter(s=>s.name===(dBefore.name||'Player'));const bestAccuracy=previous.reduce((m,s)=>Math.max(m,s.accuracy||0),accuracy);$('rBestAccuracy').textContent=Math.max(bestAccuracy,accuracy)+'%';
+ $('summary').textContent=(timeout?'Time is up! ':'Test ended. ')+`Questions: ${total}. Difficulty: ${level}. Mode: ${dailyMode?'Daily Challenge':op==='mixed'?'Mixed':op}.`;
+ const d=load(),entry={name:d.name||'Player',score:correct,accuracy:total?Math.round(correct/total*100):0,speed: speed,questions:total,elapsed:elapsed,date:new Date().toISOString(),mode:dailyMode?'Daily Challenge':level+' '+op};
+ d.scores.push(entry);d.scores=d.scores.slice(-100);
+ let best=d.scores.filter(s=>s.name===entry.name).reduce((m,s)=>Math.max(m,s.score),0);
+ if(dailyMode)d.daily[todayKey()]={score:correct,done:true,name:entry.name};
+ save(d);$('personalBest').textContent=`${entry.name}'s best score: ${best}.`;renderBoard();updateDailyInfo();
+}
+function pressKey(key){
+ if(!active||locked)return;
+ if(key==='clear')setAnswer('');
+ else if(key==='back')setAnswer(answerText.slice(0,-1));
+ else if(key==='-'){setAnswer(answerText.startsWith('-')?answerText.slice(1):'-'+answerText)}
+ else if(key==='/'){if(answerText&&!answerText.includes('/'))setAnswer(answerText+'/')}
+ else if(key==='.'){const tail=answerText.split('/').pop();if(!tail.includes('.'))setAnswer(answerText+'.')}
+ else {if(answerText.length<18)setAnswer(answerText+key)}
+}
+$('keypad').querySelectorAll('[data-key]').forEach(b=>b.addEventListener('click',()=>pressKey(b.dataset.key)));
+$('submitAnswer').onclick=submit;$('skip').onclick=skip;$('end').onclick=()=>finish(false);
+$('exit').onclick=()=>{if(!active)return;if(confirm('Exit this test and return to Home? Current test progress will be lost.')){stop();$('game').classList.add('hidden');$('result').classList.add('hidden');$('setup').classList.remove('hidden');setAnswer('')}};
+$('start').onclick=()=>start(false);$('daily').onclick=()=>{const d=load();if(d.daily[todayKey()]?.done&&!confirm('You already completed today’s challenge. Play again anyway?'))return;start(true)};
+$('retry').onclick=()=>{$('result').classList.add('hidden');$('setup').classList.remove('hidden');start(dailyMode)};
+$('backHome').onclick=()=>{$('result').classList.add('hidden');$('setup').classList.remove('hidden')};
+$('refreshBoard').onclick=renderBoard;
+function renderBoard(){
+ const d=load(),name=d.name||'Player',own=d.scores.filter(s=>s.name===name),best=own.reduce((m,s)=>Math.max(m,s.score),0);
+ $('bestScore').textContent=best;$('testsCount').textContent=own.length;
+ const scores=[...d.scores].sort((a,b)=>b.score-a.score||b.accuracy-a.accuracy).slice(0,10);
+ if(!scores.length){$('board').innerHTML='<div class="empty">Complete a test to start your leaderboard.</div>';return}
+ $('board').innerHTML='<table class="table"><thead><tr><th>#</th><th>Player</th><th>Score</th><th>Accuracy</th><th>Speed</th></tr></thead><tbody>'+scores.map((s,i)=>`<tr><td>${i+1}</td><td>${safeText(s.name)}</td><td>${s.score}</td><td>${s.accuracy}%</td><td>${Number(s.speed||0)}/min</td></tr>`).join('')+'</tbody></table>';
+}
+function updateDailyInfo(){const d=load(),done=d.daily[todayKey()]?.done;$('dailyInfo').textContent=`Today's challenge (${dateLabel()}): 90 seconds, mixed Challenge questions. `+(done?`Completed today — score: ${d.daily[todayKey()].score}. You can replay it.`:'One daily score is saved per day; replaying is allowed.')}
+$('answer').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();submit()}});
+updateProfileUI();updateDailyInfo();
+})();
+</script>
+</body></html>
